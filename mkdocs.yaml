@@ -1,0 +1,122 @@
+site_name: Microservices with Docker and Kubernetes
+site_author: Daniel Okot
+site_url: https://okotdaniel.github.io/microserices-kubernetes-docker/
+site_description: Course material for the Microservices with Docker and Kubernetes Course
+
+nav:
+  - Home: index.md
+  - Getting Started: getting_started.md
+  - Auth Service:
+    - Environment set up: services/auth/chapter0.md
+    - Creating the django project: services/auth/chapter1.md
+    - Configuring the auth service: services/auth/chapter2.md
+    - Working with  models: services/auth/chapter3.md
+    - Working with views: services/auth/chapter4.md
+    - Routing and configuration: services/auth/chapter5.md
+    - Dockerising our auth service: services/auth/chapter5.md
+    - Publishing our auth service: services/auth/chapter6.md
+  - Gateway Service:
+    - Environment set up: services/gateway/chapter0.md
+    - Creating the django project: services/gateway/chapter1.md
+    - Configuring the auth service: services/gateway/chapter2.md
+    - Data modelling: services/gateway/chapter3.md
+    - Views modelling: services/gateway/chapter4.md
+  - Converter Service: chapter3.md
+  - Mongodb : chapter4.md
+  - Postgres: chapter5.md
+  - Kubernetes: chapter6.md
+
+theme:
+  name: material
+  custom_dir: theme
+  logo: img/logo.png
+  features:
+    - navigation.top
+    - navigation.footer
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate 
+  palette:
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - meta
+  - def_list
+  - toc:
+      permalink: ⚑
+      baselevel: 2
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - theme/.icons
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+# extra_css: [stylesheets/extra.css]
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - admonition
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/okotdaniel
+
+  # analytics:
+  #   provider: google
+  #   property: G-TCHXJCN975
+              
+plugins:
+   - glightbox
+   - search
+   
+repo_name: okotdaniel/microservices-with-kubernetes
+repo_url: https://github.com/okotdaniel/microservices-with-kubernetes
