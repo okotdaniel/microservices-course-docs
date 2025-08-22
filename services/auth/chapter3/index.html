@@ -640,11 +640,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter5/" class="md-nav__link">
+      <a href="../chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Routing and configuration
+    Dockerising our auth service
   </span>
   
 
@@ -661,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter6/" class="md-nav__link">
+      <a href="../chapter7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1113,7 +1113,7 @@ Integration with the Django Admin interface for easy data management.</p>
 Django's migration system manages changes to your model definitions and translates them into database schema modifications, ensuring your database structure remains synchronized with your models.</p>
 <p>The authentication that comes with Django is good enough for most common cases, but you may have needs not met by the out-of-the-box defaults. Customizing authentication in your projects requires understanding what points of the provided system are extensible or replaceable. This document provides details about how the auth system can be customized.</p>
 <p>In this example, the Post model defines a database table for users with fields for username, first name, email and  last name. The <strong>str</strong> method defines how a Auth object will be represented as a string, which is useful in the Django Admin and other contexts.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><span class="filename">auth-service/app/models.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">Auth</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
@@ -1129,33 +1129,33 @@ Django's migration system manages changes to your model definitions and translat
 <p>We shall be  creating a custom user model in Django that uses email, username, and password for user registration. We will also modify the user model to remove certain fields that are not needed for our application.</p>
 <p>First of all, we need to create a custom user manager that will handle user creation. This manager will ensure that users can be created with an email and username.</p>
 <p>Lets create a file named <code>auth-service/app/models.py</code> like this</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>from<span class="w"> </span>django.db<span class="w"> </span>import<span class="w"> </span>models
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>from<span class="w"> </span>django.contrib.auth.models<span class="w"> </span>import<span class="w"> </span>BaseUserManager
+<p><div class="highlight"><span class="filename">auth-service/app/models.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseUserManager</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>class<span class="w"> </span>CustomUserManager<span class="o">(</span>BaseUserManager<span class="o">)</span>:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomUserManager</span><span class="p">(</span><span class="n">BaseUserManager</span><span class="p">):</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>def<span class="w"> </span>create_user<span class="o">(</span>self,<span class="w"> </span>email,<span class="w"> </span>username,<span class="w"> </span><span class="nv">password</span><span class="o">=</span>None,<span class="w"> </span>**extra_fields<span class="o">)</span>:
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>email:
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span>raise<span class="w"> </span>ValueError<span class="o">(</span><span class="s2">&quot;The Email field must be set&quot;</span><span class="o">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>username:
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span>raise<span class="w"> </span>ValueError<span class="o">(</span><span class="s2">&quot;The Username field must be set&quot;</span><span class="o">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_fields</span><span class="p">):</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">email</span><span class="p">:</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The Email field must be set&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">username</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The Username field must be set&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="nv">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>self.normalize_email<span class="o">(</span>email<span class="o">)</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nv">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>self.model<span class="o">(</span><span class="nv">email</span><span class="o">=</span>email,<span class="w"> </span><span class="nv">username</span><span class="o">=</span>username,<span class="w"> </span>**extra_fields<span class="o">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span>user.set_password<span class="o">(</span>password<span class="o">)</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span>user.save<span class="o">(</span><span class="nv">using</span><span class="o">=</span>self._db<span class="o">)</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span>user
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">email</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_email</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="n">user</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_fields</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="n">user</span><span class="o">.</span><span class="n">set_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="n">user</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">using</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="k">return</span> <span class="n">user</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>def<span class="w"> </span>create_superuser<span class="o">(</span>self,<span class="w"> </span>email,<span class="w"> </span>username,<span class="w"> </span><span class="nv">password</span><span class="o">=</span>None,<span class="w"> </span>**extra_fields<span class="o">)</span>:
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span>extra_fields.setdefault<span class="o">(</span><span class="s1">&#39;is_staff&#39;</span>,<span class="w"> </span>True<span class="o">)</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span>extra_fields.setdefault<span class="o">(</span><span class="s1">&#39;is_superuser&#39;</span>,<span class="w"> </span>True<span class="o">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">create_superuser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_fields</span><span class="p">):</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="n">extra_fields</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;is_staff&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="n">extra_fields</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;is_superuser&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>extra_fields.get<span class="o">(</span><span class="s1">&#39;is_staff&#39;</span><span class="o">)</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>True:
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">            </span>raise<span class="w"> </span>ValueError<span class="o">(</span><span class="s2">&quot;Superuser must have is_staff=True.&quot;</span><span class="o">)</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>extra_fields.get<span class="o">(</span><span class="s1">&#39;is_superuser&#39;</span><span class="o">)</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>True:
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">            </span>raise<span class="w"> </span>ValueError<span class="o">(</span><span class="s2">&quot;Superuser must have is_superuser=True.&quot;</span><span class="o">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="k">if</span> <span class="n">extra_fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_staff&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Superuser must have is_staff=True.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>        <span class="k">if</span> <span class="n">extra_fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_superuser&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Superuser must have is_superuser=True.&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span>self.create_user<span class="o">(</span>email,<span class="w"> </span>username,<span class="w"> </span>password,<span class="w"> </span>**extra_fields<span class="o">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_fields</span><span class="p">)</span>
 </code></pre></div>
 Okay Seems to be pretty much but lets condence it so that you have an idea of whats going on in the custom user manager that we recently created.  </p>
 <h4 id="1-the-create_user-method-or-function">1. The <code>create_user</code> method or function</h4>
@@ -1173,7 +1173,7 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 
 <h3 id="creating-the-custom-user-model">Creating the Custom User Model</h3>
 <p>Next, lets also create the custom user model that will use our custom user manager. Update the <code>auth-service/app/models.py</code> models.py file as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractUser</span>
+<div class="highlight"><span class="filename">auth-service/app/models.py</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractUser</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">username</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1206,8 +1206,8 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 <code>objects</code>: This line assigns our custom user manager to the model.
 <code>REQUIRED_FIELDS</code>: This specifies that the email field is required when creating a user.
 <code>USERNAME_FIELD</code>: This indicates that the username will be used as the unique identifier for authentication.</p>
-<p>Once we are done with this setup, we have introduced a new table <code>User</code> that has custom fields that is not shipped directly with django and we need to let the <code>settings.py</code> know about this. so we shall open our <code>auth-service/src/settings.py</code> and add it </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">...</span>
+<p>Once we are done with this setup, we have introduced a new table <code>User</code> that has custom fields that is not shipped directly with django and we need to let the <code>settings.py</code> know about this. so we shall open our <code>settings.py</code> and add it </p>
+<div class="highlight"><span class="filename">auth-service/src/settings.py</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">...</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">REST_FRAMEWORK</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="c1"># Use Django&#39;s standard `django.contrib.auth` permissions,</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="c1"># or allow read-only access for unauthenticated users.</span>
@@ -1222,8 +1222,8 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="o">...</span>
 </code></pre></div>
 <h3 id="registering-the-user-model">Registering the User model.</h3>
-<p>For every model that we create, if we want to interact with it, we need to add it to the <code>auth-service/app/admin.py</code> which is a central repository for managing different models with the django admin panel. To do this we start by importing the model and then use the register method as shown bellow.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">admin</span>
+<p>For every model that we create, if we want to interact with it, we need to add it to the <code>admin.py</code> which is a central repository for managing different models with the django admin panel. To do this we start by importing the model and then use the register method as shown bellow.</p>
+<div class="highlight"><span class="filename">auth-service/app/admin.py</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib</span><span class="w"> </span><span class="kn">import</span> <span class="n">admin</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
@@ -1276,7 +1276,7 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 </ol>
 <h3 id="complete-code-for-models">Complete Code for Models</h3>
 <p>Here is the final code for the models:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><span class="filename">auth-service/app/models.py</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.contrib.auth.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseUserManager</span><span class="p">,</span> <span class="n">AbstractUser</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">CustomUserManager</span><span class="p">(</span><span class="n">BaseUserManager</span><span class="p">):</span>
@@ -1338,7 +1338,7 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 <p>The process of creating the serializers is not that different from the proces off defining the models.
 For this tutorial, we shall focus more on creating a simple serializer what uses the model (User) that we created earlier on.</p>
 <p>Lets define a <code>UserSerializer</code> class that we shall use to serialize our data. To serialize our data, we shall use the <code>ModelSerializer</code> class that comes from the serializer module in the django rest framework.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
+<p><div class="highlight"><span class="filename">auth-service/app/serializers.py</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span> 
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">ModelSerializer</span><span class="p">):</span>
@@ -1354,7 +1354,7 @@ To break this down, In the fields, we specify the fields that we want to expose 
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">(</span>venv<span class="o">)</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>jwt
 </code></pre></div>
 This will install jwt that we shall use to encode our sensitive infromation while creating a user.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
+<div class="highlight"><span class="filename">auth-service/app/serializers.py</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span> 
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jwt</span>
@@ -1383,7 +1383,7 @@ This will install jwt that we shall use to encode our sensitive infromation whil
 From the above code, we create a <code>user</code> using the <code>User</code> class with a validated username and password then use the newly created user and assign a token which is encoded using the <code>secret key</code>, <code>user_id</code> and <code>HS256</code> algorthm.
 Later on we save the user in our database.</p>
 <p>Lets also create a token serializer that will convert our token into a JSON compatible response that we need for our enpoint. For this we shall use the basic serializer from restframework serializer module.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TokenSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+<div class="highlight"><span class="filename">auth-service/app/serializers.py</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TokenSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    <span class="n">token</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="putting-it-all-together-serializers">Putting It All Together: Serializers</h3>
@@ -1415,7 +1415,7 @@ Later on we save the user in our database.</p>
 </ol>
 <h3 id="complete-code-for-serializers">Complete Code for Serializers</h3>
 <p>Here is the final code for the serializers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jwt</span>
+<div class="highlight"><span class="filename">auth-service/app/serializers.py</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jwt</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rest_framework</span><span class="w"> </span><span class="kn">import</span> <span class="n">serializers</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">User</span> 
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>

@@ -2,92 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/chapter2/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/chapter3/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/chapter4/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/chapter5/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/chapter6/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/getting_started/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/installation/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/notes/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter0/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter1/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter2/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter3/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter4/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter5/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter6/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter7/</loc>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/gateway/chapter0/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://okotdaniel.github.io/microserices-kubernetes-docker/services/gateway/chapter1/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter5/">
       
       
-        <link rel="prev" href="./">
+        <link rel="prev" href="../chapter4/">
       
       
         <link rel="next" href="../chapter6/">
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#core-concepts" class="md-skip">
+        <a href="#configuring-urls-for-the-views" class="md-skip">
           Skip to content
         </a>
       
@@ -490,261 +490,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-concepts" class="md-nav__link">
+  <a href="#configuring-urls-for-the-views" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Concepts
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Docker Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-container-images" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Container Images
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
+      Configuring URLs for the Views
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-docker" class="md-nav__link">
+  <a href="#explanation" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing Docker
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    <span class="md-ellipsis">
-      macOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-docker-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing docker installation
+      Explanation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dockerising-auth-service" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Dockerising auth service
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Routing and configuration
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Routing and configuration
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Concepts
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Docker Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-container-images" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Container Images
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing Docker
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    <span class="md-ellipsis">
-      macOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-docker-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing docker installation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dockerising-auth-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dockerising auth service
+      Next Steps
     </span>
   </a>
   
@@ -767,6 +533,27 @@
   
     <li class="md-nav__item">
       <a href="../chapter6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dockerising our auth service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1039,102 +826,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-concepts" class="md-nav__link">
+  <a href="#configuring-urls-for-the-views" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Concepts
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Docker Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-container-images" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Container Images
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
+      Configuring URLs for the Views
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-docker" class="md-nav__link">
+  <a href="#explanation" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing Docker
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installing Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    <span class="md-ellipsis">
-      macOS
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
-    <span class="md-ellipsis">
-      Windows
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      Linux
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#testing-docker-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Testing docker installation
+      Explanation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dockerising-auth-service" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Dockerising auth service
+      Next Steps
     </span>
   </a>
   
@@ -1158,89 +870,45 @@
   
 
 
-<h2 id="core-concepts">Core Concepts</h2>
-<h4 id="1-docker-hub">1. <strong>Docker Hub</strong></h4>
-<p>Docker Hub is a cloud-based registry where you can store and share container images. It allows you to distribute your applications and collaborate with others. Docker Hub provides both public and private repositories for your images.</p>
-<h4 id="2-container-images">2. <strong>Container Images</strong></h4>
-<p>A container image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software. This includes the code, runtime, libraries, and dependencies.</p>
-<p>Now that we have our application up and running, next we need to containerise our application as this will be essential for them to communicate with other services that we shall be creating later on iin the course. </p>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>Before proceeding, ensure you have:
-- Administrative privileges on your machine.
-- A stable internet connection.</p>
-<h2 id="installing-docker">Installing Docker</h2>
-<h3 id="macos">macOS</h3>
-<ol>
-<li><strong>Install Docker</strong>:<ul>
-<li>Download Docker Desktop for Mac from <a href="https://www.docker.com/products/docker-desktop">Docker's official website</a>.</li>
-<li>Run the installer and follow the on-screen instructions.</li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>--version
-</code></pre></div></li>
-</ul>
-</li>
-<li><strong>Install Kubernetes</strong>:<ul>
-<li>Kubernetes is included with Docker Desktop. Enable Kubernetes in Docker Desktop settings.</li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>version<span class="w"> </span>--client
-</code></pre></div></li>
-</ul>
-</li>
-</ol>
-<h3 id="windows">Windows</h3>
-<ol>
-<li><strong>Install Docker</strong>:<ul>
-<li>Download Docker Desktop for Windows from <a href="https://www.docker.com/products/docker-desktop">Docker's official website</a>.</li>
-<li>Ensure WSL 2 is enabled (required for Docker Desktop).</li>
-<li>Run the installer and follow the on-screen instructions.</li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">docker</span> <span class="p">-</span><span class="n">-version</span>
-</code></pre></div></li>
-</ul>
-</li>
-<li><strong>Install Kubernetes</strong>:<ul>
-<li>Kubernetes is included with Docker Desktop. Enable Kubernetes in Docker Desktop settings.</li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">kubectl</span> <span class="n">version</span> <span class="p">-</span><span class="n">-client</span>
-</code></pre></div></li>
-</ul>
-</li>
-</ol>
-<h3 id="linux">Linux</h3>
-<ol>
-<li><strong>Install Docker</strong>:<ul>
-<li>Follow the official Docker Engine installation guide for your Linux distribution: <a href="https://docs.docker.com/engine/install/">Docker Linux Install</a>.</li>
-<li>Start and enable the Docker service:
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
-</code></pre></div></li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>--version
-</code></pre></div></li>
-</ul>
-</li>
-<li><strong>Install Kubernetes</strong>:<ul>
-<li>Install <code>kubectl</code> using the official guide: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Install kubectl</a>.</li>
-<li>Optionally, install Minikube for a local Kubernetes cluster: <a href="https://minikube.sigs.k8s.io/docs/start/">Install Minikube</a>.</li>
-<li>Verify installation:<br />
-  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>version<span class="w"> </span>--client
-</code></pre></div></li>
-</ul>
-</li>
-</ol>
-<h2 id="testing-docker-installation">Testing docker installation</h2>
-<p>We can test to see if docker has been installed using the commanf bellow</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+  <h1>Routing and configuration</h1>
+
+<h3 id="configuring-urls-for-the-views">Configuring URLs for the Views</h3>
+<p>To make the authentication views accessible, we need to configure the URLs for each endpoint. This involves mapping the views to specific URL patterns in the <code>urls.py</code> file of the <code>auth-service</code> app.</p>
+<p>Here’s how you can set it up:</p>
+<div class="highlight"><span class="filename">auth-service/app/urls.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">path</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">.views</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegisterView</span><span class="p">,</span> <span class="n">LoginView</span><span class="p">,</span> <span class="n">ValidateTokenView</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;register/&#39;</span><span class="p">,</span> <span class="n">RegisterView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;register&#39;</span><span class="p">),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;login/&#39;</span><span class="p">,</span> <span class="n">LoginView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;login&#39;</span><span class="p">),</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;validate-token/&#39;</span><span class="p">,</span> <span class="n">ValidateTokenView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;validate-token&#39;</span><span class="p">),</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">]</span>
 </code></pre></div>
-To also test Kubernetes, which we shall alter use in the course, we can do this  by deploying a sample application:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>hello-node<span class="w"> </span>--image<span class="o">=</span>k8s.gcr.io/echoserver:1.4
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>hello-node<span class="w"> </span>--type<span class="o">=</span>LoadBalancer<span class="w"> </span>--port<span class="o">=</span><span class="m">8080</span>
-</code></pre></div>
-<p>Later on in the course we shall learn and apply more about kubernettes. for now lets focus on docker.</p>
-<p>Since we have our app up and running, we should be thingking of deploying this application. We shall use docker to make this happen. </p>
-<p>Now that you’ve built your Docker image, you’re ready to publish it to Docker Hub. This guide will walk you through the steps required to share your image with others.</p>
-<h1 id="dockerising-auth-service">Dockerising auth service</h1>
-<p>Dockerise here</p>
+<h3 id="explanation">Explanation</h3>
+<ol>
+<li><strong>Register Endpoint</strong>:</li>
+<li>URL: <code>/register/</code></li>
+<li>View: <code>RegisterView</code></li>
+<li>
+<p>Purpose: Allows users to create an account.</p>
+</li>
+<li>
+<p><strong>Login Endpoint</strong>:</p>
+</li>
+<li>URL: <code>/login/</code></li>
+<li>View: <code>LoginView</code></li>
+<li>
+<p>Purpose: Authenticates users and provides a token.</p>
+</li>
+<li>
+<p><strong>ValidateToken Endpoint</strong>:</p>
+</li>
+<li>URL: <code>/validate-token/</code></li>
+<li>View: <code>ValidateTokenView</code></li>
+<li>Purpose: Validates the token provided by the user.</li>
+</ol>
+<h3 id="next-steps">Next Steps</h3>
+<p>With the URLs configured, you can now test the endpoints using tools like Postman or curl. Ensure that each endpoint behaves as expected and returns the appropriate responses. This completes the setup for the authentication service!</p>
 
 
 
@@ -1276,7 +944,7 @@ To also test Kubernetes, which we shall alter use in the course, we can do this 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="./" class="md-footer__link md-footer__link--prev" aria-label="Previous: Routing and configuration">
+          <a href="../chapter4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Working with views">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1286,20 +954,20 @@ To also test Kubernetes, which we shall alter use in the course, we can do this 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Routing and configuration
+                Working with views
               </div>
             </div>
           </a>
         
         
           
-          <a href="../chapter6/" class="md-footer__link md-footer__link--next" aria-label="Next: Publishing our auth service">
+          <a href="../chapter6/" class="md-footer__link md-footer__link--next" aria-label="Next: Dockerising our auth service">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Publishing our auth service
+                Dockerising our auth service
               </div>
             </div>
             <div class="md-footer__button md-icon">
