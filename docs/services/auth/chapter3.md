@@ -37,7 +37,7 @@ The authentication that comes with Django is good enough for most common cases, 
 
 In this example, the Post model defines a database table for users with fields for username, first name, email and  last name. The __str__ method defines how a Auth object will be represented as a string, which is useful in the Django Admin and other contexts.
 
-```python 
+```python title="auth-service/app/models.py"
 from django.db import models
 
 class Auth(models.Model):
@@ -60,7 +60,7 @@ First of all, we need to create a custom user manager that will handle user crea
 
 Lets create a file named `auth-service/app/models.py` like this
 
-```bash
+```python title="auth-service/app/models.py"
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
 
@@ -118,7 +118,7 @@ Applies NFKC Unicode normalization to usernames so that visually identical chara
 ###  Creating the Custom User Model
 Next, lets also create the custom user model that will use our custom user manager. Update the `auth-service/app/models.py` models.py file as follows:
 
-```python 
+```python title="auth-service/app/models.py"
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
@@ -158,9 +158,9 @@ So here is a summerised information about each field that we defined earlier on 
 `REQUIRED_FIELDS`: This specifies that the email field is required when creating a user.
 `USERNAME_FIELD`: This indicates that the username will be used as the unique identifier for authentication.
 
-Once we are done with this setup, we have introduced a new table `User` that has custom fields that is not shipped directly with django and we need to let the `settings.py` know about this. so we shall open our `auth-service/src/settings.py` and add it 
+Once we are done with this setup, we have introduced a new table `User` that has custom fields that is not shipped directly with django and we need to let the `settings.py` know about this. so we shall open our `settings.py` and add it 
 
-```python 
+```python title="auth-service/src/settings.py"
 ...
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -177,9 +177,9 @@ ROOT_URLCONF = 'src.urls'
 ```
 
 ### Registering the User model.
-For every model that we create, if we want to interact with it, we need to add it to the `auth-service/app/admin.py` which is a central repository for managing different models with the django admin panel. To do this we start by importing the model and then use the register method as shown bellow.
+For every model that we create, if we want to interact with it, we need to add it to the `admin.py` which is a central repository for managing different models with the django admin panel. To do this we start by importing the model and then use the register method as shown bellow.
 
-```python
+```python title="auth-service/app/admin.py"
 from django.contrib import admin
 from app.models import User
 
@@ -229,7 +229,7 @@ At this point, we have successfully created a custom user model and a custom use
 
 Here is the final code for the models:
 
-```python
+```python title="auth-service/app/models.py"
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractUser
 
@@ -305,7 +305,7 @@ For this tutorial, we shall focus more on creating a simple serializer what uses
 
 Lets define a `UserSerializer` class that we shall use to serialize our data. To serialize our data, we shall use the `ModelSerializer` class that comes from the serializer module in the django rest framework.
 
-```python
+```python title="auth-service/app/serializers.py"
 from rest_framework import serializers
 from app.models import User 
 
@@ -328,7 +328,7 @@ One more thing to do, lets install `jwt` using pip
 ```
 This will install jwt that we shall use to encode our sensitive infromation while creating a user.
 
-```python
+```python title="auth-service/app/serializers.py"
 from rest_framework import serializers
 from app.models import User 
 
@@ -361,7 +361,7 @@ Later on we save the user in our database.
 
 Lets also create a token serializer that will convert our token into a JSON compatible response that we need for our enpoint. For this we shall use the basic serializer from restframework serializer module.
 
-```python 
+```python title="auth-service/app/serializers.py"
 class TokenSerializer(serializers.Serializer):
     token = serializers.CharField()
 ```
@@ -389,7 +389,7 @@ At this point, we have successfully created serializers to handle the conversion
 
 Here is the final code for the serializers:
 
-```python
+```python title="auth-service/app/serializers.py"
 import jwt
 from rest_framework import serializers
 from app.models import User 
