@@ -12,28 +12,28 @@
         <meta name="author" content="Daniel Okot">
       
       
-        <link rel="canonical" href="https://okotdaniel.github.io/microserices-kubernetes-docker/getting_started/">
+        <link rel="canonical" href="https://okotdaniel.github.io/microserices-kubernetes-docker/services/auth/chapter7/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../chapter6/">
       
       
-        <link rel="next" href="../services/auth/chapter0/">
+        <link rel="next" href="../../gateway/chapter0/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
     
     
       
-        <title>Getting Started - Microservices with Docker and Kubernetes</title>
+        <title>Publishing our auth service - Microservices with Docker and Kubernetes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,14 +52,14 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -68,7 +68,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#1-sign-in-to-docker-hub" class="md-skip">
           Skip to content
         </a>
       
@@ -103,9 +103,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Microservices with Docker and Kubernetes" class="md-header__button md-logo" aria-label="Microservices with Docker and Kubernetes" data-md-component="logo">
+    <a href="../../.." title="Microservices with Docker and Kubernetes" class="md-header__button md-logo" aria-label="Microservices with Docker and Kubernetes" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../../img/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting Started
+              Publishing our auth service
             
           </span>
         </div>
@@ -237,9 +237,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Microservices with Docker and Kubernetes" class="md-nav__button md-logo" aria-label="Microservices with Docker and Kubernetes" data-md-component="logo">
+    <a href="../../.." title="Microservices with Docker and Kubernetes" class="md-nav__button md-logo" aria-label="Microservices with Docker and Kubernetes" data-md-component="logo">
       
-  <img src="../img/logo.png" alt="logo">
+  <img src="../../../img/logo.png" alt="logo">
 
     </a>
     Microservices with Docker and Kubernetes
@@ -266,7 +266,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -283,28 +283,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Getting Started
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../getting_started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -313,42 +295,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-we-chose-this-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why We Chose This Stack
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -357,17 +303,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -381,7 +329,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Auth Service
@@ -395,7 +343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter0/" class="md-nav__link">
+      <a href="../chapter0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -416,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter1/" class="md-nav__link">
+      <a href="../chapter1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -437,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter2/" class="md-nav__link">
+      <a href="../chapter2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter3/" class="md-nav__link">
+      <a href="../chapter3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -479,7 +427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter4/" class="md-nav__link">
+      <a href="../chapter4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -500,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter5/" class="md-nav__link">
+      <a href="../chapter5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -521,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/auth/chapter6/" class="md-nav__link">
+      <a href="../chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -539,10 +487,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../services/auth/chapter7/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Publishing our auth service
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -551,6 +517,96 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-sign-in-to-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sign in to Docker Hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-a-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create a Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-your-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Build Your Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tag-your-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tag Your Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-push-the-image-to-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Push the Image to Docker Hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verify-the-image-on-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Verify the Image on Docker Hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -605,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gateway/chapter0/" class="md-nav__link">
+      <a href="../../gateway/chapter0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -626,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gateway/chapter1/" class="md-nav__link">
+      <a href="../../gateway/chapter1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -647,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gateway/chapter2.md" class="md-nav__link">
+      <a href="../../gateway/chapter2.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -668,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gateway/chapter3.md" class="md-nav__link">
+      <a href="../../gateway/chapter3.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/gateway/chapter4.md" class="md-nav__link">
+      <a href="../../gateway/chapter4.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -717,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter3/" class="md-nav__link">
+      <a href="../../../chapter3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -737,7 +793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter4/" class="md-nav__link">
+      <a href="../../../chapter4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -757,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter5/" class="md-nav__link">
+      <a href="../../../chapter5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chapter6/" class="md-nav__link">
+      <a href="../../../chapter6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -815,18 +871,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#1-sign-in-to-docker-hub" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      1. Sign in to Docker Hub
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-we-chose-this-stack" class="md-nav__link">
+  <a href="#2-create-a-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Why We Chose This Stack
+      2. Create a Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-build-your-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Build Your Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tag-your-docker-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tag Your Docker Image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-push-the-image-to-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Push the Image to Docker Hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verify-the-image-on-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Verify the Image on Docker Hub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recap
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
     </span>
   </a>
   
@@ -850,21 +960,79 @@
   
 
 
-  <h1>Getting Started</h1>
+  <h1>Publishing our auth service</h1>
 
-<h2 id="introduction">Introduction</h2>
-<p>This application will be a fully-fledged PDF converter, enabling users to convert various documents into PDF format. It operates on a diverse technology stack, which will be detailed below.
-First, let's explore the stack that powers this application and the rationale behind our choices.
-We have:
-MongoDB and PostgreSQL as our database providers.
-Django and FastAPI to power the different services within the application.
-Next.js on the frontend, facilitating the upload of documents and the retrieval of converted PDFs.
-RabbitMQ as a notification service and runtime broker.</p>
-<h2 id="why-we-chose-this-stack">Why We Chose This Stack</h2>
-<p>At first glance, one might question the need for such a complex configuration for a seemingly simple task like PDF conversion. This is a valid point. However, the answer lies in the benefits of scalability, flexibility, and maintainability that this stack provides.
-Using a combination of Django and FastAPI allows us to leverage the strengths of both frameworks: Django for its robust features and FastAPI for its speed and efficiency in handling asynchronous requests. The choice of MongoDB and PostgreSQL offers us the flexibility to manage different types of data effectively.
-Moreover, Next.js enhances the user experience by providing a seamless interface for document uploads and conversions. Finally, RabbitMQ ensures that our application can handle notifications and background tasks efficiently, making it more responsive and reliable.
-In summary, while the core functionality may seem straightforward, the chosen stack supports a scalable and efficient application that can grow and adapt to future needs.</p>
+<h4 id="1-sign-in-to-docker-hub">1. Sign in to Docker Hub</h4>
+<p>To push images to Docker Hub, you need to sign in with your Docker account.</p>
+<ul>
+<li>Open a terminal and run:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>login
+</code></pre></div></li>
+<li>Enter your Docker Hub username and password when prompted.</li>
+</ul>
+<p>Alternatively, you can sign in via the Docker Desktop application.</p>
+<h4 id="2-create-a-repository">2. Create a Repository</h4>
+<p>Before pushing your image, you need a repository to store it.</p>
+<ul>
+<li>Go to <a href="https://hub.docker.com">Docker Hub</a>.</li>
+<li>Click on <strong>Create Repository</strong>.</li>
+<li>Fill in the following details:<ul>
+<li><strong>Repository Name</strong>: Choose a name for your repository (e.g., <code>my-app</code>).</li>
+<li><strong>Visibility</strong>: Select <strong>Public</strong> or <strong>Private</strong> based on your preference.</li>
+</ul>
+</li>
+<li>Click <strong>Create</strong> to finalize.</li>
+</ul>
+<h4 id="3-build-your-docker-image">3. Build Your Docker Image</h4>
+<p>Before tagging and pushing your image, you need to build it from your Dockerfile.</p>
+<ul>
+<li>Navigate to the directory containing your Dockerfile.</li>
+<li>Run the following command to build the image:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>docker_username/app_name<span class="w"> </span>.
+</code></pre></div></li>
+<li>Example:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-app:1.0<span class="w"> </span>.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;DOCKER_USERNAME&gt;/getting-started-todo-app<span class="w"> </span>.
+</code></pre></div></li>
+</ul>
+<p>This command creates a Docker image with the specified tag (<code>local-image:tagname</code>) based on the instructions in your Dockerfile.</p>
+<p>By default it will create an image with the latest tag.</p>
+<h4 id="4-tag-your-docker-image">4. Tag Your Docker Image</h4>
+<p>Tag your local Docker image to match the repository name on Docker Hub.</p>
+<ul>
+<li>Use the following command:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>tag<span class="w"> </span>local-image:tagname<span class="w"> </span>your-dockerhub-username/repository-name:tagname
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>build<span class="w">  </span>-t<span class="w"> </span>okotdaniel/auth-service<span class="w"> </span>.
+</code></pre></div></li>
+<li>Example:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>tag<span class="w"> </span>my-app:1.0<span class="w"> </span>johndoe/my-app:1.0
+</code></pre></div></li>
+</ul>
+<h4 id="5-push-the-image-to-docker-hub">5. Push the Image to Docker Hub</h4>
+<p>Push the tagged image to your Docker Hub repository.</p>
+<ul>
+<li>Run the following command:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>push<span class="w"> </span>your-dockerhub-username/repository-name:tagname
+</code></pre></div></li>
+<li>Example:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>push<span class="w"> </span>johndoe/my-app:1.0
+</code></pre></div></li>
+</ul>
+<h4 id="6-verify-the-image-on-docker-hub">6. Verify the Image on Docker Hub</h4>
+<ul>
+<li>Visit your Docker Hub account and navigate to the repository.</li>
+<li>Confirm that the image has been successfully uploaded.</li>
+</ul>
+<h3 id="recap">Recap</h3>
+<p>In this tutorial, you learned how to:</p>
+<ul>
+<li>Sign in to Docker Hub.</li>
+<li>Create a repository to store your image.</li>
+<li>Tag and push your Docker image to Docker Hub.</li>
+</ul>
+<p>By following these steps, you can easily share your containerized applications with others or use them in your own projects.</p>
+<h3 id="next-steps">Next Steps</h3>
+<p>Explore Docker Hub to discover other images you can use as a base for your projects. Additionally, consider learning about private registries if you need to store sensitive or proprietary images.</p>
 
 
 
@@ -900,7 +1068,7 @@ In summary, while the core functionality may seem straightforward, the chosen st
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+          <a href="../chapter6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dockerising our auth service">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -910,14 +1078,14 @@ In summary, while the core functionality may seem straightforward, the chosen st
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Dockerising our auth service
               </div>
             </div>
           </a>
         
         
           
-          <a href="../services/auth/chapter0/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment set up">
+          <a href="../../gateway/chapter0/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment set up">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
@@ -972,10 +1140,10 @@ In summary, while the core functionality may seem straightforward, the chosen st
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.footer", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.footer", "navigation.instant", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

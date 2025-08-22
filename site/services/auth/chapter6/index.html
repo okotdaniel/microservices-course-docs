@@ -18,7 +18,7 @@
         <link rel="prev" href="../chapter5/">
       
       
-        <link rel="next" href="../../gateway/chapter0/">
+        <link rel="next" href="../chapter7/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Publishing our auth service - Microservices with Docker and Kubernetes</title>
+        <title>Dockerising our auth service - Microservices with Docker and Kubernetes</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-sign-in-to-docker-hub" class="md-skip">
+        <a href="#core-concepts" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Publishing our auth service
+              Dockerising our auth service
             
           </span>
         </div>
@@ -466,27 +466,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../chapter5/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Routing and configuration
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -501,7 +480,7 @@
           
   
   <span class="md-ellipsis">
-    Publishing our auth service
+    Dockerising our auth service
   </span>
   
 
@@ -512,7 +491,7 @@
         
   
   <span class="md-ellipsis">
-    Publishing our auth service
+    Dockerising our auth service
   </span>
   
 
@@ -532,72 +511,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-sign-in-to-docker-hub" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Sign in to Docker Hub
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Docker Hub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-container-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Container Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-repository" class="md-nav__link">
+  <a href="#installing-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Create a Repository
+      Installing Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-docker-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing docker installation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-build-your-docker-image" class="md-nav__link">
+  <a href="#dockerising-auth-service" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Build Your Docker Image
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-tag-your-docker-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Tag Your Docker Image
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-push-the-image-to-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Push the Image to Docker Hub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-verify-the-image-on-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Verify the Image on Docker Hub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recap
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
+      Dockerising auth service
     </span>
   </a>
   
@@ -607,6 +616,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Publishing our auth service
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -871,72 +901,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-sign-in-to-docker-hub" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Sign in to Docker Hub
+      Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Docker Hub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-container-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Container Images
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-repository" class="md-nav__link">
+  <a href="#installing-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Create a Repository
+      Installing Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-docker-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing docker installation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-build-your-docker-image" class="md-nav__link">
+  <a href="#dockerising-auth-service" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Build Your Docker Image
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-tag-your-docker-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Tag Your Docker Image
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-push-the-image-to-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Push the Image to Docker Hub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-verify-the-image-on-docker-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Verify the Image on Docker Hub
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recap
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
+      Dockerising auth service
     </span>
   </a>
   
@@ -960,79 +1020,89 @@
   
 
 
-  <h1>Publishing our auth service</h1>
-
-<h4 id="1-sign-in-to-docker-hub">1. Sign in to Docker Hub</h4>
-<p>To push images to Docker Hub, you need to sign in with your Docker account.</p>
-<ul>
-<li>Open a terminal and run:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>login
+<h2 id="core-concepts">Core Concepts</h2>
+<h4 id="1-docker-hub">1. <strong>Docker Hub</strong></h4>
+<p>Docker Hub is a cloud-based registry where you can store and share container images. It allows you to distribute your applications and collaborate with others. Docker Hub provides both public and private repositories for your images.</p>
+<h4 id="2-container-images">2. <strong>Container Images</strong></h4>
+<p>A container image is a lightweight, standalone, and executable package that includes everything needed to run a piece of software. This includes the code, runtime, libraries, and dependencies.</p>
+<p>Now that we have our application up and running, next we need to containerise our application as this will be essential for them to communicate with other services that we shall be creating later on iin the course. </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before proceeding, ensure you have:
+- Administrative privileges on your machine.
+- A stable internet connection.</p>
+<h2 id="installing-docker">Installing Docker</h2>
+<h3 id="macos">macOS</h3>
+<ol>
+<li><strong>Install Docker</strong>:<ul>
+<li>Download Docker Desktop for Mac from <a href="https://www.docker.com/products/docker-desktop">Docker's official website</a>.</li>
+<li>Run the installer and follow the on-screen instructions.</li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>--version
 </code></pre></div></li>
-<li>Enter your Docker Hub username and password when prompted.</li>
-</ul>
-<p>Alternatively, you can sign in via the Docker Desktop application.</p>
-<h4 id="2-create-a-repository">2. Create a Repository</h4>
-<p>Before pushing your image, you need a repository to store it.</p>
-<ul>
-<li>Go to <a href="https://hub.docker.com">Docker Hub</a>.</li>
-<li>Click on <strong>Create Repository</strong>.</li>
-<li>Fill in the following details:<ul>
-<li><strong>Repository Name</strong>: Choose a name for your repository (e.g., <code>my-app</code>).</li>
-<li><strong>Visibility</strong>: Select <strong>Public</strong> or <strong>Private</strong> based on your preference.</li>
 </ul>
 </li>
-<li>Click <strong>Create</strong> to finalize.</li>
-</ul>
-<h4 id="3-build-your-docker-image">3. Build Your Docker Image</h4>
-<p>Before tagging and pushing your image, you need to build it from your Dockerfile.</p>
-<ul>
-<li>Navigate to the directory containing your Dockerfile.</li>
-<li>Run the following command to build the image:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>docker_username/app_name<span class="w"> </span>.
-</code></pre></div></li>
-<li>Example:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-app:1.0<span class="w"> </span>.
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;DOCKER_USERNAME&gt;/getting-started-todo-app<span class="w"> </span>.
+<li><strong>Install Kubernetes</strong>:<ul>
+<li>Kubernetes is included with Docker Desktop. Enable Kubernetes in Docker Desktop settings.</li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>version<span class="w"> </span>--client
 </code></pre></div></li>
 </ul>
-<p>This command creates a Docker image with the specified tag (<code>local-image:tagname</code>) based on the instructions in your Dockerfile.</p>
-<p>By default it will create an image with the latest tag.</p>
-<h4 id="4-tag-your-docker-image">4. Tag Your Docker Image</h4>
-<p>Tag your local Docker image to match the repository name on Docker Hub.</p>
-<ul>
-<li>Use the following command:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>tag<span class="w"> </span>local-image:tagname<span class="w"> </span>your-dockerhub-username/repository-name:tagname
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>build<span class="w">  </span>-t<span class="w"> </span>okotdaniel/auth-service<span class="w"> </span>.
-</code></pre></div></li>
-<li>Example:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>tag<span class="w"> </span>my-app:1.0<span class="w"> </span>johndoe/my-app:1.0
-</code></pre></div></li>
-</ul>
-<h4 id="5-push-the-image-to-docker-hub">5. Push the Image to Docker Hub</h4>
-<p>Push the tagged image to your Docker Hub repository.</p>
-<ul>
-<li>Run the following command:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>push<span class="w"> </span>your-dockerhub-username/repository-name:tagname
-</code></pre></div></li>
-<li>Example:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>push<span class="w"> </span>johndoe/my-app:1.0
+</li>
+</ol>
+<h3 id="windows">Windows</h3>
+<ol>
+<li><strong>Install Docker</strong>:<ul>
+<li>Download Docker Desktop for Windows from <a href="https://www.docker.com/products/docker-desktop">Docker's official website</a>.</li>
+<li>Ensure WSL 2 is enabled (required for Docker Desktop).</li>
+<li>Run the installer and follow the on-screen instructions.</li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">docker</span> <span class="p">-</span><span class="n">-version</span>
 </code></pre></div></li>
 </ul>
-<h4 id="6-verify-the-image-on-docker-hub">6. Verify the Image on Docker Hub</h4>
-<ul>
-<li>Visit your Docker Hub account and navigate to the repository.</li>
-<li>Confirm that the image has been successfully uploaded.</li>
+</li>
+<li><strong>Install Kubernetes</strong>:<ul>
+<li>Kubernetes is included with Docker Desktop. Enable Kubernetes in Docker Desktop settings.</li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">kubectl</span> <span class="n">version</span> <span class="p">-</span><span class="n">-client</span>
+</code></pre></div></li>
 </ul>
-<h3 id="recap">Recap</h3>
-<p>In this tutorial, you learned how to:</p>
-<ul>
-<li>Sign in to Docker Hub.</li>
-<li>Create a repository to store your image.</li>
-<li>Tag and push your Docker image to Docker Hub.</li>
+</li>
+</ol>
+<h3 id="linux">Linux</h3>
+<ol>
+<li><strong>Install Docker</strong>:<ul>
+<li>Follow the official Docker Engine installation guide for your Linux distribution: <a href="https://docs.docker.com/engine/install/">Docker Linux Install</a>.</li>
+<li>Start and enable the Docker service:
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker
+</code></pre></div></li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>--version
+</code></pre></div></li>
 </ul>
-<p>By following these steps, you can easily share your containerized applications with others or use them in your own projects.</p>
-<h3 id="next-steps">Next Steps</h3>
-<p>Explore Docker Hub to discover other images you can use as a base for your projects. Additionally, consider learning about private registries if you need to store sensitive or proprietary images.</p>
+</li>
+<li><strong>Install Kubernetes</strong>:<ul>
+<li>Install <code>kubectl</code> using the official guide: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Install kubectl</a>.</li>
+<li>Optionally, install Minikube for a local Kubernetes cluster: <a href="https://minikube.sigs.k8s.io/docs/start/">Install Minikube</a>.</li>
+<li>Verify installation:<br />
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>version<span class="w"> </span>--client
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<h2 id="testing-docker-installation">Testing docker installation</h2>
+<p>We can test to see if docker has been installed using the commanf bellow</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</code></pre></div>
+To also test Kubernetes, which we shall alter use in the course, we can do this  by deploying a sample application:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>hello-node<span class="w"> </span>--image<span class="o">=</span>k8s.gcr.io/echoserver:1.4
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>expose<span class="w"> </span>deployment<span class="w"> </span>hello-node<span class="w"> </span>--type<span class="o">=</span>LoadBalancer<span class="w"> </span>--port<span class="o">=</span><span class="m">8080</span>
+</code></pre></div>
+<p>Later on in the course we shall learn and apply more about kubernettes. for now lets focus on docker.</p>
+<p>Since we have our app up and running, we should be thingking of deploying this application. We shall use docker to make this happen. </p>
+<p>Now that you’ve built your Docker image, you’re ready to publish it to Docker Hub. This guide will walk you through the steps required to share your image with others.</p>
+<h1 id="dockerising-auth-service">Dockerising auth service</h1>
+<p>Dockerise here</p>
 
 
 
@@ -1085,13 +1155,13 @@
         
         
           
-          <a href="../../gateway/chapter0/" class="md-footer__link md-footer__link--next" aria-label="Next: Environment set up">
+          <a href="../chapter7/" class="md-footer__link md-footer__link--next" aria-label="Next: Publishing our auth service">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Environment set up
+                Publishing our auth service
               </div>
             </div>
             <div class="md-footer__button md-icon">
