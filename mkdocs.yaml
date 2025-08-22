@@ -13,8 +13,8 @@ nav:
     - Working with  models: services/auth/chapter3.md
     - Working with views: services/auth/chapter4.md
     - Routing and configuration: services/auth/chapter5.md
-    - Dockerising our auth service: services/auth/chapter5.md
-    - Publishing our auth service: services/auth/chapter6.md
+    - Dockerising our auth service: services/auth/chapter6.md
+    - Publishing our auth service: services/auth/chapter7.md
   - Gateway Service:
     - Environment set up: services/gateway/chapter0.md
     - Creating the django project: services/gateway/chapter1.md
